@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.kotlincoroutines.main
+package com.ring.coroutines.main
 
 import android.content.Context
 import androidx.lifecycle.LiveData

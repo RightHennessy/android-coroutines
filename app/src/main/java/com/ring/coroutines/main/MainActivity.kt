@@ -23,7 +23,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
-import com.example.android.kotlincoroutines.main.getDatabase
 import com.google.android.material.snackbar.Snackbar
 import com.ring.coroutines.R
 

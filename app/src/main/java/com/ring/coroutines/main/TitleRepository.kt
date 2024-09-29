@@ -18,8 +18,6 @@ package com.ring.coroutines.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
-import com.example.android.kotlincoroutines.main.Title
-import com.example.android.kotlincoroutines.main.TitleDao
 import com.ring.coroutines.util.BACKGROUND
 
 /**
@@ -66,13 +64,13 @@ class TitleRepository(val network: MainNetwork, val titleDao: TitleDao) {
                 } else {
                     // If it's not successful, inform the callback of the error
                     titleRefreshCallback.onError(
-                            TitleRefreshError("Unable to refresh title", null)
+                        TitleRefreshError("Unable to refresh title", null)
                     )
                 }
             } catch (cause: Throwable) {
                 // If anything throws an exception, inform the caller
                 titleRefreshCallback.onError(
-                        TitleRefreshError("Unable to refresh title", cause)
+                    TitleRefreshError("Unable to refresh title", cause)
                 )
             }
         }
