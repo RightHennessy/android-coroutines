@@ -19,8 +19,11 @@ package com.ring.coroutines.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ring.coroutines.util.BACKGROUND
 import com.ring.coroutines.util.singleArgViewModelFactory
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * MainViewModel designed to store and manage UI-related data in a lifecycle conscious way. This
@@ -101,10 +104,12 @@ class MainViewModel(private val repository: TitleRepository) : ViewModel() {
      * Wait one second then update the tap count.
      */
     private fun updateTaps() {
-        // TODO: Convert updateTaps to use coroutines
-        tapCount++
-        BACKGROUND.submit {
-            Thread.sleep(1_000)
+        // 여기서 스레드를 변경하지 않으면 스레드가 잠들기 때문에(sleep) 아무 작업도 하지 않는다.
+        // UI는 1초 후에 한번에 갱신되는데, 이때 update가 지연 되면서 spinner가 display 되지 못한다. (jump 현상)
+        viewModelScope.launch {
+            tapCount++
+            // sleep은 thread를 block하는 반면, delay 함수는 스레드를 block하지 않는다.
+            delay(1_000)
             _taps.postValue("${tapCount} taps")
         }
     }
@@ -124,6 +129,7 @@ class MainViewModel(private val repository: TitleRepository) : ViewModel() {
         _spinner.value = true
         repository.refreshTitleWithCallbacks(object : TitleRefreshCallback {
             override fun onCompleted() {
+                // postValue는 백그라운드 스레드에서 작업이 발생하므로 UI 갱신을 위해서는 main 스레드를 대기해야 한다.
                 _spinner.postValue(false)
             }
 

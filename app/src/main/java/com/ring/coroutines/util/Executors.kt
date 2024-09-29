@@ -21,4 +21,7 @@ import java.util.concurrent.Executors
 /**
  * An executor service that can run [Runnable]s off the main thread.
  */
+
+// Java의 Executors 클래스를 사용하여 만든 스레드 풀이다.
+// 아래 코드는 최대 2개의 스레드를 사용하는 고정 크기 스레드 풀을 생성한다.
 val BACKGROUND = Executors.newFixedThreadPool(2)
