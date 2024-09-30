@@ -44,5 +44,6 @@ fun getNetworkService() = service
  */
 interface MainNetwork {
     @GET("next_title.json")
-    fun fetchNextTitle(): Call<String>
+    // retrofit은 call 형태로 반환하지 않는다.
+    suspend fun fetchNextTitle(): String
 }

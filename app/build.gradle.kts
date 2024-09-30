@@ -57,7 +57,7 @@ dependencies {
     implementation(libs.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler.v251)
+    kapt(libs.androidx.room.compiler)
 
     // Coroutine
     implementation(libs.kotlinx.coroutines.core)
