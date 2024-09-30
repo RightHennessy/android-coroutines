@@ -18,6 +18,7 @@ package com.ring.coroutines.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
+import kotlinx.coroutines.withTimeout
 
 /**
  * TitleRepository provides an interface to fetch a title or request a new one be generated.
@@ -50,7 +51,10 @@ class TitleRepository(val network: MainNetwork, val titleDao: TitleDao) {
         // withContext를 사용하지 않아도 된다.
         // Room과 Retrofit은 main-safe하기 때문
         try {
-            val result = network.fetchNextTitle()
+            // withTimeout : 네트워크 요청이 특정 시간 이상 걸리면 자동으로 TimeoutCancellationException
+            val result = withTimeout(5_000) {
+                network.fetchNextTitle()
+            }
             titleDao.insertTitle((Title(result)))
         } catch (cause: Throwable) {
             throw TitleRefreshError("Unable to refresh title", cause)

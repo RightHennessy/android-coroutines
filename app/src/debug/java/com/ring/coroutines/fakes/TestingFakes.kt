@@ -99,16 +99,20 @@ class MainNetworkFake(var result: String) : MainNetwork {
  * Testing Fake for MainNetwork that lets you complete or error all current requests
  */
 class MainNetworkCompletableFake() : MainNetwork {
+    // CompletableDeferred : public function을 이용해 완료하거나 취소할 수 있는 Deferred
     private var completable = CompletableDeferred<String>()
 
+    // await : 결과가 설정될 때까지 대기
     override suspend fun fetchNextTitle(): String = completable.await()
 
     fun sendCompletionToAllCurrentRequests(result: String) {
+        // complete : 수동 완료
         completable.complete(result)
         completable = CompletableDeferred()
     }
 
     fun sendErrorToCurrentRequests(throwable: Throwable) {
+        // 예외와 함께 완료
         completable.completeExceptionally(throwable)
         completable = CompletableDeferred()
     }
