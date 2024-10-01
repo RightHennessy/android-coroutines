@@ -4,6 +4,8 @@
 
 [코틀린 공식 문서](https://kotlinlang.org/docs/coroutines-overview.html)
 
+<br>
+
 코루틴: 데이터베이스 또는 네트워크 액세스와 같이 오래 실행되는 작업의 비동기 콜백을 순차 코드로 변환하는 Kotlin의 기능이다.
 
 ```kotlin
