@@ -132,6 +132,8 @@ suspend fun slowFetch(): SlowResult {
 코루틴 스코프는 해당 스코프에서 실행되는 모든 코루틴을 한번에 관리할 수 있다. <br>
 -> Job을 취소하면, 그 coroutineScope 안에서 실행 중인 모든 코루틴이 취소된다. <br>
 
+ <br>
+
 **작업 취소**
 
 activity나 fragment에서 코루틴 스코프를 사용하여 사용자가 화면을 이동 할 때, Job을 취소하여 UI 관련 모든 코루틴을 취소할 수 있다. <br>
@@ -146,6 +148,8 @@ UI 작업을 수행하는 코루틴은 주로 Dispatchers.Main에서 실행해�
 즉, 코루틴이 suspend 상태가 되는 동안 메인 스레드는 계속 다른 작업을 처리할 수 있다. <br>
 
 dispatcher 교체는 `withContext` 함수를 통해 이루어진다.
+
+ <br>
 
 **main-safety**
 
