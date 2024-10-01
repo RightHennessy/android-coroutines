@@ -178,8 +178,8 @@ viewModelScope를 사용하면 뷰모델 내에서 코루틴을 쉽게 실행하
 
 🤔 코루틴에 대해 자세히 알고 싶다면 !
 
-[Coroutines: first things first](https://medium.com/androiddevelopers/coroutines-first-things-first-e6187bf3bb21)
-[Cancellation in coroutines](https://medium.com/androiddevelopers/cancellation-in-coroutines-aa6b90163629)
-[Exceptions in coroutines](https://medium.com/androiddevelopers/exceptions-in-coroutines-ce8da1ec060c)
+[Coroutines: first things first](https://medium.com/androiddevelopers/coroutines-first-things-first-e6187bf3bb21) <br>
+[Cancellation in coroutines](https://medium.com/androiddevelopers/cancellation-in-coroutines-aa6b90163629) <br>
+[Exceptions in coroutines](https://medium.com/androiddevelopers/exceptions-in-coroutines-ce8da1ec060c) <br>
 
 [Coroutines guide](https://kotlinlang.org/docs/coroutines-guide.html)
